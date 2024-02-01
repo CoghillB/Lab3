@@ -10,10 +10,10 @@ public class StudentGrades {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         ArrayList<Student> students = new ArrayList<>();
-        int choice;
+        // int choice;
         boolean running = true;
 
-        while(running){
+        while (running) {
             try {
                 System.out.println();
                 System.out.println("Menu");
@@ -22,7 +22,8 @@ public class StudentGrades {
                 System.out.println("2. Edit Student Grade");
                 System.out.println("3. Exit");
 
-                choice = input.nextInt();
+                int choice = input.nextInt();
+
                 if (choice != 1 && choice != 2 && choice != 3) {
                     System.out.println("Enter a valid input");
 
@@ -34,17 +35,14 @@ public class StudentGrades {
                     System.out.println("Goodbye");
                     running = false;
                 }
-
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input");
                 input.nextLine();
-
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Index out of bounds exception");
                 input.nextLine();
             }
         }
-
         input.close();
     }
 
@@ -71,7 +69,6 @@ public class StudentGrades {
                 newGrade = input.nextInt();
             }
             students.get(choice - 1).setGrade(newGrade);
-
         } catch (InputMismatchException e) {
             System.out.println("Please enter the correct input.");
             input.next();
