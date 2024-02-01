@@ -1,7 +1,7 @@
-
 /* Author: Brayden Coghill
  * Date: February 01, 2024
  */
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -32,6 +32,7 @@ public class StudentGrades {
                 } else if (choice == 2) {
                     editStudentGrade(students, input);
                 } else if (choice == 3) {
+                    System.out.println();
                     System.out.println("Goodbye");
                     running = false;
                 }
@@ -96,5 +97,36 @@ public class StudentGrades {
             System.out.println("Index out of bounds");
             input.next();
         }
+    }
+}
+
+class Student {
+    private String name;
+    private int grade;
+
+    public Student(String name, int grade) {
+        this.name = name;
+        this.grade = grade;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    @Override
+    public String toString() {
+        return name + " - " + grade;
     }
 }
