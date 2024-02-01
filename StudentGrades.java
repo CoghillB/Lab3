@@ -31,6 +31,7 @@ public class StudentGrades {
                 }
 
             } while (choice != 3);
+            
         } catch (InputMismatchException e) {
             System.out.println("Invalid input");
             input.nextLine();
@@ -39,7 +40,7 @@ public class StudentGrades {
             System.out.println("Index out of bounds exception");
             input.nextLine();
             main(args);
-            
+
         }
         input.close();
     }
