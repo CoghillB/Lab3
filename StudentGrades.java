@@ -1,3 +1,7 @@
+
+/* Author: Brayden Coghill
+ * Date: February 01, 2024
+ */
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -7,9 +11,10 @@ public class StudentGrades {
         Scanner input = new Scanner(System.in);
         ArrayList<Student> students = new ArrayList<>();
         int choice;
-        //if exception is caught it will print out the error and loop back to the previous option
-        try {
-            do {
+        boolean running = true;
+
+        while(running){
+            try {
                 System.out.println();
                 System.out.println("Menu");
                 System.out.println();
@@ -25,23 +30,21 @@ public class StudentGrades {
                     addStudents(students, input);
                 } else if (choice == 2) {
                     editStudentGrade(students, input);
-                }else if(choice == 3){
+                } else if (choice == 3) {
                     System.out.println("Goodbye");
-                    break;
+                    running = false;
                 }
 
-            } while (choice != 3);
-            
-        } catch (InputMismatchException e) {
-            System.out.println("Invalid input");
-            input.nextLine();
-            main(args);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Index out of bounds exception");
-            input.nextLine();
-            main(args);
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input");
+                input.nextLine();
 
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Index out of bounds exception");
+                input.nextLine();
+            }
         }
+
         input.close();
     }
 
@@ -54,7 +57,7 @@ public class StudentGrades {
             System.out.println("what students grade would you like to edit?");
             for (int i = 0; i < students.size(); i++) {
                 System.out.println((i + 1) + ". " + students.get(i).getName() + " - " + students.get(i).getGrade());
-                
+
             }
             int choice = input.nextInt();
             while (choice < 1 || choice > students.size()) {
@@ -68,7 +71,7 @@ public class StudentGrades {
                 newGrade = input.nextInt();
             }
             students.get(choice - 1).setGrade(newGrade);
-        
+
         } catch (InputMismatchException e) {
             System.out.println("Please enter the correct input.");
             input.next();
